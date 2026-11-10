@@ -1,0 +1,24 @@
+apply plugin: 'com.android.library'
+if (project.extensions.findByName('kotlin') == null) {
+    apply plugin: 'org.jetbrains.kotlin.android'
+}
+apply plugin: 'org.jetbrains.kotlin.plugin.parcelize'
+
+android {
+    compileSdk appLibs.versions.androidCompileSdkVersion.get().toInteger()
+
+    defaultConfig {
+        minSdk appLibs.versions.androidMinSdkVersion.get().toInteger()
+        targetSdk appLibs.versions.androidTargetSdkVersion.get().toInteger()
+        versionCode 1
+        versionName "1.0"
+    }
+    lint {
+        disable 'NullSafeMutableLiveData'
+    }
+}
+
+dependencies {
+    implementation appTooling.kotlin.stdLib
+    implementation appTooling.kotlin.collectionsImmutable
+}

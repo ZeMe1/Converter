@@ -1,0 +1,17 @@
+apply from: "$project.rootDir/gradle_scripts/kotlin-base-android-library.gradle"
+
+android {
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+dependencies {
+    coreLibraryDesugaring appLibs.desugarJdk
+}

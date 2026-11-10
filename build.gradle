@@ -1,0 +1,8 @@
+plugins {
+    alias(appTooling.plugins.android.application) apply false
+    alias(appTooling.plugins.android.library) apply false
+    alias(appTooling.plugins.kotlin.android) apply false
+    alias(appTooling.plugins.kotlin.parcelize) apply false
+    alias(appTooling.plugins.compose.compiler) apply false
+    alias(appTooling.plugins.ksp) apply false
+}

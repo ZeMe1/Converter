@@ -1,0 +1,11 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+    versionCatalogs {
+        appTooling { from(files("gradle/converter-tooling.versions.toml")) }
+        appLibs { from(files("gradle/converter-libs.versions.toml")) }
+    }
+}

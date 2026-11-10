@@ -1,0 +1,80 @@
+plugins {
+    id 'com.android.application'
+    alias(appTooling.plugins.compose.compiler)
+    alias(appTooling.plugins.kotlin.parcelize)
+}
+
+apply from: "$project.rootDir/gradle_scripts/environment-constants.gradle"
+
+android {
+    namespace 'kz.zeme.converter'
+    compileSdk appLibs.versions.androidCompileSdkVersion.get().toInteger()
+
+    defaultConfig {
+        applicationId "kz.zeme.converter"
+        minSdk appLibs.versions.androidMinSdkVersion.get().toInteger()
+        targetSdk appLibs.versions.androidTargetSdkVersion.get().toInteger()
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+        }
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlin {
+        jvmToolchain(17)
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring appLibs.desugarJdk
+    implementation(platform(appTooling.compose.bom))
+    implementation appTooling.bundles.compose
+    implementation appTooling.compose.livedata
+    implementation appTooling.kotlin.stdLib
+    implementation appTooling.kotlin.collectionsImmutable
+
+    implementation appLibs.androidx.core.ktx
+    implementation appLibs.androidx.lifecycle.runtime.ktx
+    implementation appLibs.androidx.lifecycle.livedata.ktx
+    implementation appLibs.androidx.lifecycle.viewmodel.ktx
+    implementation appLibs.androidx.activity.compose
+    implementation appLibs.androidx.appcompat
+    implementation appLibs.material
+
+    testImplementation appLibs.junit
+    androidTestImplementation platform(appTooling.compose.bom)
+    androidTestImplementation appTooling.compose.ui.test.junit4
+    androidTestImplementation appLibs.androidx.junit
+    androidTestImplementation appLibs.androidx.espresso.core
+    debugImplementation appTooling.compose.ui.tooling
+    debugImplementation appTooling.compose.ui.test.manifest
+}

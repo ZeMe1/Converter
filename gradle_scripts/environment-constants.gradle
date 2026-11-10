@@ -1,0 +1,12 @@
+ext {
+    VERSION_CODE = 1
+    VERSION_NAME = "1.0.0"
+    APP_SCHEME = "converter"
+
+    addToManifest = { target, constantName, constantValue ->
+        target.manifestPlaceholders += [(constantName): constantValue]
+    }
+    addToBuildConfig = { target, constantName, constantValue ->
+        target.buildConfigField "String", "${constantName}", "\"${constantValue}\""
+    }
+}

@@ -1,0 +1,19 @@
+ext.addModules = { String folder ->
+    def dir = file(folder)
+    if (!dir.exists()) return
+    dir.listFiles().each { File moduleDir ->
+        if (moduleDir.isDirectory() && !moduleDir.name.startsWith(".")) {
+            def moduleName = ":${dashSeparated(moduleDir.name)}"
+            include(moduleName)
+            project(moduleName).setProjectDir(moduleDir)
+        }
+    }
+}
+
+private static def dashSeparated(String s) {
+    return s.replaceAll(/\B[A-Z]/) { '-' + it }.toLowerCase()
+}
+
+include(":app")
+addModules("features")
+addModules("libraries")

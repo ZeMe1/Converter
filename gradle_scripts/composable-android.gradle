@@ -1,0 +1,22 @@
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+
+android {
+    buildFeatures {
+        compose true
+    }
+    defaultConfig {
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+    packaging {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation(platform(appTooling.compose.bom))
+    implementation appTooling.bundles.compose
+}

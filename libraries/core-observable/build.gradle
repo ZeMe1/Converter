@@ -1,0 +1,15 @@
+apply from: "$project.rootDir/gradle_scripts/java-version-android-library.gradle"
+
+android {
+    namespace 'kz.zeme.converter.core.observable'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':core-error')
+
+    implementation appLibs.androidx.lifecycle.runtime.ktx
+    implementation appLibs.androidx.lifecycle.livedata.ktx
+    implementation appTooling.kotlin.coroutines.core
+    implementation appTooling.kotlin.coroutines.android
+}

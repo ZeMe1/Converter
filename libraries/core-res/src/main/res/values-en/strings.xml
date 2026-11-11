@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shared_network_error">Network connection error</string>
+    <string name="shared_unknown_error">An unexpected error occurred</string>
+    <string name="shared_copied">Copied</string>
+</resources>

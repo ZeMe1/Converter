@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shared_network_error">Желіге қосылу қатесі</string>
+    <string name="shared_unknown_error">Күтпеген қате орын алды</string>
+    <string name="shared_copied">Көшірілді</string>
+</resources>

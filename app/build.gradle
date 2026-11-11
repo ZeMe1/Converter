@@ -63,6 +63,7 @@ dependencies {
     implementation project(':core-navigation')
     implementation project(':core-activity')
     implementation project(':core-res')
+    implementation project(':core-fragment')
 
     coreLibraryDesugaring appLibs.desugarJdk
     implementation(platform(appTooling.compose.bom))

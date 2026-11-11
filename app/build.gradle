@@ -60,6 +60,7 @@ dependencies {
     implementation project(':core-error')
     implementation project(':core-observable')
     implementation project(':core-di')
+    implementation project(':core-navigation')
 
     coreLibraryDesugaring appLibs.desugarJdk
     implementation(platform(appTooling.compose.bom))

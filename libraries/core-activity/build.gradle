@@ -1,0 +1,15 @@
+apply from: "$project.rootDir/gradle_scripts/java-version-android-library.gradle"
+
+android {
+    namespace 'kz.zeme.converter.core.activity'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':core-res')
+    implementation project(':core-error')
+
+    implementation appLibs.androidx.appcompat
+    implementation appLibs.androidx.activity.ktx
+    implementation appLibs.androidx.core.ktx
+}

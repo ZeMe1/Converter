@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shared_network_error">Ошибка подключения к сети</string>
+    <string name="shared_unknown_error">Произошла непредвиденная ошибка</string>
+    <string name="shared_copied">Скопировано</string>
+</resources>

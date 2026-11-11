@@ -79,9 +79,14 @@ dependencies {
     implementation appLibs.androidx.lifecycle.runtime.ktx
     implementation appLibs.androidx.lifecycle.livedata.ktx
     implementation appLibs.androidx.lifecycle.viewmodel.ktx
+    implementation appLibs.androidx.activity.ktx
     implementation appLibs.androidx.activity.compose
+    implementation appLibs.androidx.fragment.ktx
     implementation appLibs.androidx.appcompat
     implementation appLibs.material
+
+    implementation appLibs.bundles.koin
+    implementation appLibs.koin.androidx.compose
 
     testImplementation appLibs.junit
     androidTestImplementation platform(appTooling.compose.bom)

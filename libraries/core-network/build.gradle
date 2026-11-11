@@ -1,0 +1,20 @@
+apply from: "$project.rootDir/gradle_scripts/java-version-android-library.gradle"
+
+android {
+    namespace 'kz.zeme.converter.core.network'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':core-error')
+    implementation project(':core-observable')
+
+    implementation appLibs.koin.core
+    implementation appLibs.koin.android
+
+    implementation appLibs.retrofit
+    implementation appLibs.retrofit.converter.gson
+    implementation appLibs.okhttp
+    implementation appLibs.okhttp.logging.interceptor
+    implementation appLibs.gson
+}

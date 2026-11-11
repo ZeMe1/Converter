@@ -3,4 +3,7 @@
     <string name="shared_network_error">Ошибка подключения к сети</string>
     <string name="shared_unknown_error">Произошла непредвиденная ошибка</string>
     <string name="shared_copied">Скопировано</string>
+    <string name="shared_retry">Повторить</string>
+    <string name="shared_something_went_wrong">Что-то пошло не так</string>
+    <string name="shared_max_char">Максимум %1$d символов</string>
 </resources>

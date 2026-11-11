@@ -3,4 +3,7 @@
     <string name="shared_network_error">Network connection error</string>
     <string name="shared_unknown_error">An unexpected error occurred</string>
     <string name="shared_copied">Copied</string>
+    <string name="shared_retry">Retry</string>
+    <string name="shared_something_went_wrong">Something went wrong</string>
+    <string name="shared_max_char">Maximum %1$d characters</string>
 </resources>

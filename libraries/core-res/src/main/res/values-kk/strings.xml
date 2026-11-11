@@ -3,4 +3,7 @@
     <string name="shared_network_error">Желіге қосылу қатесі</string>
     <string name="shared_unknown_error">Күтпеген қате орын алды</string>
     <string name="shared_copied">Көшірілді</string>
+    <string name="shared_retry">Қайталау</string>
+    <string name="shared_something_went_wrong">Бірдеңе дұрыс болмады</string>
+    <string name="shared_max_char">Максимум %1$d таңба</string>
 </resources>

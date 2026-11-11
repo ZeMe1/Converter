@@ -1,5 +1,11 @@
 apply from: "$project.rootDir/gradle_scripts/java-version-android-library.gradle"
+apply from: "$project.rootDir/gradle_scripts/composable-android.gradle"
 
 android {
     namespace 'kz.zeme.converter.core.res'
+}
+
+dependencies {
+    implementation appLibs.androidx.appcompat
+    implementation appLibs.material
 }

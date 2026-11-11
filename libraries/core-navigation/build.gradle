@@ -1,0 +1,16 @@
+apply from: "$project.rootDir/gradle_scripts/java-version-android-library.gradle"
+
+android {
+    namespace 'kz.zeme.converter.core.navigation'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':core-error')
+    implementation project(':core-observable')
+
+    implementation appLibs.androidx.appcompat
+    implementation appLibs.androidx.core.ktx
+    implementation appLibs.androidx.fragment.ktx
+    implementation appLibs.androidx.lifecycle.livedata.ktx
+}

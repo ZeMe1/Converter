@@ -6,4 +6,29 @@
     <string name="shared_retry">Повторить</string>
     <string name="shared_something_went_wrong">Что-то пошло не так</string>
     <string name="shared_max_char">Максимум %1$d символов</string>
+
+    <string name="language_picker_title">Язык приложения</string>
+    <string name="language_picker_language_ru">Русский</string>
+    <string name="language_picker_language_kz">Қазақша</string>
+    <string name="language_picker_language_en">English</string>
+    <string name="language_picker_language_changed_message">Язык успешно изменен</string>
+
+    <string name="currency_picker_title">Выберите валюту</string>
+    <string name="currency_picker_search_hint">Поиск валюты</string>
+    <string name="currency_picker_empty_search">Ничего не найдено</string>
+
+    <string name="home_title">Конвертер</string>
+    <string name="home_amount_hint">0</string>
+    <string name="home_other_rates">Другие курсы</string>
+    <string name="home_pair_rate_format">1 %1$s = %2$s %3$s</string>
+    <string name="home_error_title">Ошибка загрузки</string>
+    <string name="home_empty_title">Нет доступных курсов</string>
+    <string name="home_empty_subtitle">Список курсов временно недоступен</string>
+
+    <plurals name="home_currencies_count">
+        <item quantity="one">%1$d валюта</item>
+        <item quantity="few">%1$d валюты</item>
+        <item quantity="many">%1$d валют</item>
+        <item quantity="other">%1$d валюты</item>
+    </plurals>
 </resources>

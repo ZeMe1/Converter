@@ -15,11 +15,7 @@ object KoinController {
         startKoin {
             allowOverride(true)
             androidContext(application)
-            properties(
-                KoinProperties.getKoinProperties(
-                    application = application,
-                )
-            )
+            properties(KoinProperties.getKoinProperties())
             modules(modules = modules)
         }
     }

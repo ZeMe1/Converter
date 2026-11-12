@@ -80,6 +80,10 @@ fun TextField(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     requestFocus: Boolean = false,
     focusedBorderColor: Color = ConverterTheme.colors.basicGray,
+    errorBorderColor: Color = ConverterTheme.colors.basicError,
+    containerColor: Color = ConverterTheme.colors.buttonSecondary,
+    errorContainerColor: Color = ConverterTheme.colors.inputErrorBg,
+    contentPadding: PaddingValues? = null,
     shape: Shape = RoundedCornerShape(8.dp),
     filter: ((text: String) -> String)? = null,
     onValueChange: ((text: String) -> Unit)? = null,
@@ -114,14 +118,14 @@ fun TextField(
     val borderColor =
         if (!enabled) Color.Transparent
         else if (readOnly) Color.Transparent
-        else if (hasError) ConverterTheme.colors.basicError
+        else if (hasError) errorBorderColor
         else if (hasFocus.value) focusedBorderColor
         else Color.Transparent
 
     val backgroundColor =
         if (!enabled) ConverterTheme.colors.buttonDisabled
-        else if (hasError) ConverterTheme.colors.inputErrorBg
-        else ConverterTheme.colors.buttonSecondary
+        else if (hasError) errorContainerColor
+        else containerColor
 
     val cursorColor =
         if (hasError) ConverterTheme.colors.basicError
@@ -173,6 +177,7 @@ fun TextField(
                     TextFieldDefaults.DecorationBox(
                         placeholder = {
                             Text(
+                                modifier = Modifier.fillMaxWidth(),
                                 text = hint,
                                 style = hintStyle,
                                 maxLines = 1,
@@ -205,9 +210,10 @@ fun TextField(
                             cursorColor = Color.Transparent,
                         ),
                         contentPadding =
-                            if (minHeight < 56.dp) PaddingValues(horizontal = 16.dp, vertical = 4.dp)
-                            else if (label == null) contentPaddingWithoutLabel()
-                            else contentPaddingWithLabel(),
+                            contentPadding
+                                ?: if (minHeight < 56.dp) PaddingValues(horizontal = 16.dp, vertical = 4.dp)
+                                else if (label == null) contentPaddingWithoutLabel()
+                                else contentPaddingWithLabel(),
                         container = {
                             Box(
                                 modifier = Modifier

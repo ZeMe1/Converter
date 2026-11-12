@@ -1,5 +1,6 @@
 package kz.zeme.converter.di
 
+import kz.zeme.converter.core.currency.di.coreCurrencyModule
 import kz.zeme.converter.core.locale.di.coreLocaleModule
 import kz.zeme.converter.core.locale.view.di.coreLocaleViewModule
 import kz.zeme.converter.core.network.di.coreNetworkModule
@@ -13,6 +14,7 @@ open class KoinModules {
         coreUiModule,
         coreLocaleModule,
         coreLocaleViewModule,
+        coreCurrencyModule,
         appModule,
     )
 }

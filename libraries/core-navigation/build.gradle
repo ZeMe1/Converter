@@ -9,6 +9,7 @@ dependencies {
     implementation project(':core-error')
     implementation project(':core-observable')
 
+    implementation appLibs.koin.core
     implementation appLibs.androidx.appcompat
     implementation appLibs.androidx.core.ktx
     implementation appLibs.androidx.fragment.ktx

@@ -5,6 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 enum class RequestCode : Parcelable {
-    RC_CONFIRM_ACTION,
-    RC_ITEM_DETAILS,
+    RC_PICK_FROM_CURRENCY,
+    RC_PICK_TO_CURRENCY,
 }

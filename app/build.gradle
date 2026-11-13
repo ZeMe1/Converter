@@ -70,6 +70,7 @@ dependencies {
     implementation project(':core-locale')
     implementation project(':core-locale-view')
     implementation project(':core-currency')
+    implementation project(':core-currency-view')
 
     coreLibraryDesugaring appLibs.desugarJdk
     implementation(platform(appTooling.compose.bom))

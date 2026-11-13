@@ -1,0 +1,25 @@
+apply from: "$project.rootDir/gradle_scripts/java-version-android-library.gradle"
+apply from: "$project.rootDir/gradle_scripts/composable-android.gradle"
+
+android {
+    namespace 'kz.zeme.converter.core.currency.view'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':core-di')
+    implementation project(':core-error')
+    implementation project(':core-fragment')
+    implementation project(':core-navigation')
+    implementation project(':core-observable')
+    implementation project(':core-res')
+    implementation project(':core-ui')
+    implementation project(':core-currency')
+
+    implementation appLibs.bundles.koin
+    implementation appLibs.androidx.fragment.ktx
+    implementation appLibs.material
+    implementation appLibs.androidx.lifecycle.livedata.ktx
+    implementation appLibs.androidx.lifecycle.viewmodel.ktx
+    implementation appTooling.compose.livedata
+}

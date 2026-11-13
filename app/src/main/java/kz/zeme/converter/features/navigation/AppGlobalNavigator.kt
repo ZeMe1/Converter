@@ -6,6 +6,8 @@ import kz.zeme.converter.MainActivity
 import kz.zeme.converter.R
 import kz.zeme.converter.core.activity.ActivityProvider
 import kz.zeme.converter.core.activity.extensions.makeToast
+import kz.zeme.converter.core.currency.view.presentation.navigation.CurrencyPickerNavigation
+import kz.zeme.converter.core.currency.view.presentation.navigation.CurrencyPickerRouter
 import kz.zeme.converter.core.fragment.extensions.isShown
 import kz.zeme.converter.core.locale.view.presentation.navigation.LanguagePickerNavigation
 import kz.zeme.converter.core.locale.view.presentation.navigation.LanguagePickerRouter
@@ -19,6 +21,7 @@ import kz.zeme.converter.splash.SplashFragment
 class AppGlobalNavigator(
     private val activityProvider: ActivityProvider,
     private val languagePickerRouter: LanguagePickerRouter,
+    private val currencyPickerRouter: CurrencyPickerRouter,
 ) : ExternalModulesNavigator {
 
     override fun navigate(navigation: Navigator.Navigation) = when (navigation) {
@@ -28,6 +31,7 @@ class AppGlobalNavigator(
         is BaseNavigation.ShowMain -> showMain(navigation)
         is SplashExternalNavigation.ShowNextScreen -> showSplashNextScreen(navigation)
         is LanguagePickerNavigation.OpenLanguagePicker -> openLanguagePicker()
+        is CurrencyPickerNavigation.OpenCurrencyPicker -> openCurrencyPicker(navigation)
         else -> Unit
     }
 
@@ -106,8 +110,23 @@ class AppGlobalNavigator(
 
         if (fm.isShown(tag)) return
 
-        languagePickerRouter
-            .getLanguagePickerFragment()
-            .show(fm, tag)
+        val instance = languagePickerRouter.getLanguagePickerFragment()
+
+        instance.show(fm, tag)
+    }
+
+    private fun openCurrencyPicker(navigation: CurrencyPickerNavigation.OpenCurrencyPicker) {
+        val fm = activityProvider.currentActivity?.supportFragmentManager ?: return
+        val tag = CurrencyPickerRouter.TAG_CURRENCY_PICKER
+
+        if (fm.isShown(tag)) return
+
+        val instance = currencyPickerRouter.getCurrencyPickerFragment(
+            baseCode = navigation.baseCode,
+            selectedCode = navigation.selectedCode,
+            requestCode = navigation.requestCode,
+        )
+
+        instance.show(fm, tag)
     }
 }

@@ -38,6 +38,7 @@ val appModule = module {
             activityProvider = get(),
             languagePickerRouter = get(),
             currencyPickerRouter = get(),
+            homeRouter = get(),
         )
     }.binds(
         ExternalModulesNavigator::class,

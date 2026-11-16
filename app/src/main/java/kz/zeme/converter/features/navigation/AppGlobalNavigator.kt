@@ -15,6 +15,9 @@ import kz.zeme.converter.core.navigation.BaseNavigation
 import kz.zeme.converter.core.navigation.ExternalModulesNavigator
 import kz.zeme.converter.core.navigation.Navigator
 import kz.zeme.converter.core.navigation.extensions.putRedirect
+import kz.zeme.converter.home.presentation.HomeFragment
+import kz.zeme.converter.home.presentation.navigation.HomeNavigation
+import kz.zeme.converter.home.presentation.navigation.HomeRouter
 import kz.zeme.converter.splash.SplashExternalNavigation
 import kz.zeme.converter.splash.SplashFragment
 
@@ -22,6 +25,7 @@ class AppGlobalNavigator(
     private val activityProvider: ActivityProvider,
     private val languagePickerRouter: LanguagePickerRouter,
     private val currencyPickerRouter: CurrencyPickerRouter,
+    private val homeRouter: HomeRouter,
 ) : ExternalModulesNavigator {
 
     override fun navigate(navigation: Navigator.Navigation) = when (navigation) {
@@ -32,6 +36,7 @@ class AppGlobalNavigator(
         is SplashExternalNavigation.ShowNextScreen -> showSplashNextScreen(navigation)
         is LanguagePickerNavigation.OpenLanguagePicker -> openLanguagePicker()
         is CurrencyPickerNavigation.OpenCurrencyPicker -> openCurrencyPicker(navigation)
+        is HomeNavigation.OpenHome -> openHome()
         else -> Unit
     }
 
@@ -90,7 +95,29 @@ class AppGlobalNavigator(
                 }
             }
 
+        val hasHome = fm.fragments
+            .filterIsInstance<HomeFragment>()
+            .isNotEmpty()
+
+        if (!hasHome) {
+            val homeFragment = homeRouter.getHomeFragment()
+            fm.commit {
+                setReorderingAllowed(true)
+                replace(R.id.fragment_container_view, homeFragment)
+            }
+        }
+
         navigation.redirect?.let(::navigate)
+    }
+
+    private fun openHome() {
+        val activity = activityProvider.currentActivity ?: return
+        val fm = activity.supportFragmentManager
+        val homeFragment = homeRouter.getHomeFragment()
+        fm.commit {
+            setReorderingAllowed(true)
+            replace(R.id.fragment_container_view, homeFragment)
+        }
     }
 
     private fun showSplashNextScreen(navigation: SplashExternalNavigation.ShowNextScreen) {

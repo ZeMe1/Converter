@@ -4,7 +4,9 @@ import kz.zeme.converter.core.currency.data.CurrencyApiMapper
 import kz.zeme.converter.core.currency.data.CurrencyNetworkDataSource
 import kz.zeme.converter.core.currency.data.CurrencyRateApiMapper
 import kz.zeme.converter.core.currency.data.DefaultCurrencyRepository
+import kz.zeme.converter.core.currency.domain.CurrencyFormatter
 import kz.zeme.converter.core.currency.domain.CurrencyRepository
+import kz.zeme.converter.core.currency.domain.DefaultCurrencyFormatter
 import kz.zeme.converter.core.di.extensions.binds
 import kz.zeme.converter.core.env.props.BaseSettings.Property
 import kz.zeme.converter.core.network.extensions.createWebService
@@ -18,6 +20,12 @@ val coreCurrencyModule = module {
 
     factory { CurrencyApiMapper() }
     factory { CurrencyRateApiMapper() }
+
+    single {
+        DefaultCurrencyFormatter()
+    }.binds(
+        CurrencyFormatter::class,
+    )
 
     single {
         DefaultCurrencyRepository(

@@ -7,6 +7,7 @@ import kz.zeme.converter.core.locale.view.di.coreLocaleViewModule
 import kz.zeme.converter.core.navigation.di.coreNavigationModule
 import kz.zeme.converter.core.network.di.coreNetworkModule
 import kz.zeme.converter.core.ui.di.coreUiModule
+import kz.zeme.converter.home.di.homeModule
 import org.koin.core.module.Module
 
 open class KoinModules {
@@ -19,6 +20,7 @@ open class KoinModules {
         coreLocaleViewModule,
         coreCurrencyModule,
         coreCurrencyViewModule,
+        homeModule,
         appModule,
     )
 }

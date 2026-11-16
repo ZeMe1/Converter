@@ -208,6 +208,10 @@ fun TextField(
                             unfocusedContainerColor = Color.Transparent,
                             disabledContainerColor = Color.Transparent,
                             cursorColor = Color.Transparent,
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            disabledIndicatorColor = Color.Transparent,
+                            errorIndicatorColor = Color.Transparent,
                         ),
                         contentPadding =
                             contentPadding
@@ -215,17 +219,23 @@ fun TextField(
                                 else if (label == null) contentPaddingWithoutLabel()
                                 else contentPaddingWithLabel(),
                         container = {
+                            val borderModifier = if (borderColor != Color.Transparent) {
+                                Modifier.border(
+                                    width = 1.dp,
+                                    color = borderColor,
+                                    shape = shape,
+                                )
+                            } else {
+                                Modifier
+                            }
+
                             Box(
                                 modifier = Modifier
                                     .background(
                                         color = backgroundColor,
                                         shape = shape,
                                     )
-                                    .border(
-                                        width = 1.dp,
-                                        color = borderColor,
-                                        shape = shape,
-                                    ),
+                                    .then(borderModifier),
                             )
                         },
                     )
